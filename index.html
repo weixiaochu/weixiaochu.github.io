@@ -1,1 +1,131 @@
-hello world
+<!DOCTYPE html>
+<html>
+ <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /> 
+    <meta name="format-detection" content="telephone=no,email=no,address=no" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta name="renderer" content="webkit" /> 
+    <meta name="applicable-device" content="pc,mobile" /> 
+    <script type="text/javascript" src="./static/jquery.min.js"></script> 
+    <script type="text/javascript" src="./static/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="./dir.js"></script> 
+    <link href="./static/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="./static/style.css" rel="stylesheet" /> 
+    <!--[if lt IE 9]>
+        <script src="./skin/default/js/html5shiv.min.js"></script>
+        <script src="./skin/default/js/respond.min.js"></script>
+    <![endif]--> 
+    <link href="./static/mediastyle.css" rel="stylesheet" /> 
+    <title>个人网站</title> 
+    <meta name="Keywords" content="个人网站,个人网页,个人站点,个人博客,个人主页" /> 
+    <meta name="Description" content="关于个人学习、工作、生活、情感以及创作、收集的文章。欢迎大家光临，多多交流！" /> 
+    <!--<base target="_blank">--> 
+    <base href="." target="_blank" /> 
+    </head> 
+<body>
+<nav class="navbar navbar-default trnavbar">
+    <div class="container trlogoother " id="trlogoother">
+        <div class="trlogo clearfix" id="trlogodiv">
+            <table id="trlogotb" style="height: 70px; width: 300px;">
+                <tbody>
+                    <tr>
+                        <td align="left" valign="middle">
+                            <a href="" title="">
+                                <img src="" alt="" width=" 250">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button type="button" class="navbar-toggle trmnavbtn" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">手机导航</span> <span class="icon-bar"></span>
+                <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="trnav" id="trnav178888">
+        <div class="container">
+            <div class="collapse navbar-collapse trcollapse" id="navbar-collapse">
+            <div class="trrow1200">
+                <ul class="nav navbar-nav trnavul" id="nav">
+  
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container trcolumn clearfix" id="Icontent">
+        <script type="text/javascript">
+            function trautoLogoPlace(){
+                if (document.body.clientWidth>=1200 ){
+                    otrlogotb=document.getElementById("trlogotb")
+                    trlogoother=document.getElementById("trlogoother")
+                    trlogodiv=document.getElementById("trlogodiv")
+                    otrlogotb.style.height =trlogoother.offsetHeight+'px'
+                    otrlogotb.style.width =(trlogodiv.offsetWidth)+'px'
+                }
+            }
+            trautoLogoPlace()
+            var html = '';
+            var nav = '';
+            for(let index in dir) {
+                nav += '<li><a href="./'+index+'/index.html?class='+index+'" target="_self">'+index+'</a></li>';
+
+                html += '<div class="col-lg-4 col-md-6 trnewlist trrow991">';
+                    html += '<div class="trtitle3 ">';
+                        html += '<div class="trtitle3text trfl">';
+                            html += '<a href="">'+index+'</a>';
+                        html += '</div>';
+                        html += '<span class="trmore trfr">';
+                            html += '<a href="./'+index+'/index.html?class='+index+'">More..</a>';
+                        html += '</span>';
+                    html += '</div>';
+                    html += ' <ul class="tridxul">';
+
+                    for(let i in dir[index]) {
+                        // 排除列表页
+                        if(dir[index][i] == 'index.html'){
+                            continue;
+                        }
+                        html += '<li>';
+                            html += '<span class="spw1">07-13</span>';
+                            html += '<a href="./'+index+'/'+dir[index][i]+'" title="'+dir[index][i]+'">'+dir[index][i]+'</a>';
+                        html += '</li>';
+                    }
+
+                    html += '</ul>';
+                html += '</div>';
+            };
+            // console.log(html);
+            document.getElementById('Icontent').innerHTML = html;
+            document.getElementById('nav').innerHTML = nav;
+        </script>
+
+
+<!-- 
+        <div class="col-lg-4 col-md-6 trnewlist trrow991"> 
+            <div class="trtitle3 "> 
+                <div class="trtitle3text trfl"> 
+                    <a href="">IT业界</a> 
+                </div> 
+                <span class="trmore trfr">
+                    <a href="">More..</a>
+                </span> 
+            </div> 
+            <ul class="tridxul"> 
+                <li>
+                    <span class="spw1">07-13</span>
+                    <a href="" title="短视频的彷徨与退让：积蓄力量，正待春暖花开">短视频的彷徨与退让：积蓄力量，正待春暖花开</a>
+                </li>
+            </ul> 
+        </div>
+ -->
+    </div>
+
+</body>
+</html>

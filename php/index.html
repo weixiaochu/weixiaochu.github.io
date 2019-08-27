@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" /> 
+    <meta name="format-detection" content="telephone=no,email=no,address=no" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta name="renderer" content="webkit" /> 
+    <meta name="applicable-device" content="pc,mobile" /> 
+    <script type="text/javascript" src="../static/jquery.min.js"></script> 
+    <script type="text/javascript" src="../static/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="../dir.js"></script> 
+    <link href="../static/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="../static/style.css" rel="stylesheet" /> 
+    <!--[if lt IE 9]>
+        <script src="./skin/default/js/html5shiv.min.js"></script>
+        <script src="./skin/default/js/respond.min.js"></script>
+    <![endif]--> 
+    <link href="../static/mediastyle.css" rel="stylesheet" /> 
+    <title>个人网站</title> 
+    <meta name="Keywords" content="个人网站,个人网页,个人站点,个人博客,个人主页" /> 
+    <meta name="Description" content="关于个人学习、工作、生活、情感以及创作、收集的文章。欢迎大家光临，多多交流！" /> 
+    <!--<base target="_blank">--> 
+    <base href="." target="_blank" /> 
+    </head> 
+<body> 
+    <div class="container trcolumn clearfix">
+        <div class="col-lg-4 col-md-6 trnewlist trrow991"> 
+            <div class="trtitle3 "> 
+                <div class="trtitle3text trfl"> 
+                    <a href="" id="type"></a> 
+                </div> 
+                <span class="trmore trfr">
+                    <a href="#">More..</a>
+                </span> 
+            </div> 
+            <ul class="tridxul" id="Icontent">
+
+            </ul> 
+        </div>
+    </div>
+     <script type="text/javascript">
+        $(function(){
+        	/** 
+	         * 获取指定的URL参数值 
+	         * URL:http://www.fuck.com/index?name=tyler 
+	         * 参数：paramName URL参数 
+	         * 调用方法:getParam("name") 
+	         * 返回值:tyler 
+	         */ 
+	        function getParam(paramName) { 
+	            paramValue = "", isFound = !1; 
+	            if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) { 
+	                arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0; 
+	                while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++ 
+	            } 
+	            return paramValue == "" && (paramValue = null), paramValue 
+	        }
+
+	        function isEmpty(obj){
+	            if(typeof obj == "undefined" || obj == null || obj == ""){
+	                return true;
+	            }else{
+	                return false;
+	            }
+	        }
+
+	        var index = getParam('class');
+	        document.getElementById('type').innerHTML = index;
+
+			var html = '';
+	        for(let i in dir[index]) {
+                // 排除列表页
+                if(dir[index][i] == 'index.html'){
+                    continue;
+                }
+                html += '<li>';
+                    html += '<span class="spw1">07-13</span>';
+                    html += '<a href="./'+dir[index][i]+'" title="">'+dir[index][i]+'</a>';
+                html += '</li>';
+            }
+            
+            document.getElementById('Icontent').innerHTML = html;
+        });
+    </script>     
+</body>
+</html>
