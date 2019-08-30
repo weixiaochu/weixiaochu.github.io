@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>实时-折线图</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript" src="../static/echarts-all.js"></script> 
+</head>
+<body>
+	<div id="container" style="height:400px">						
+	</div>
+	<script type="text/javascript">
+		var data = [{"70-79分":32,"60-69分":15,"80-89分":18,"90-99分":8,"100+":24,"60分以下":10}];
+
+	    keys = [];
+    	values = [];
+    	keys.push('100+');
+    	values.push(data[0]['100+']);
+    	
+    	keys.push('90-99分');
+    	values.push(data[0]['90-99分']);
+    	
+    	keys.push('80-89分');
+    	values.push(data[0]['80-89分']);
+    	
+    	keys.push('70-79分');
+    	values.push(data[0]['70-79分']);
+    	
+    	keys.push('60-69分');
+    	values.push(data[0]['60-69分']);
+
+	    var dom = document.getElementById("container");
+	    dom.style.width='400px';
+	    var myChart = echarts.init(dom);
+	    // myChart.showLoading();
+	    option = null;
+		option = {
+		    title : {
+		        text: '企业信用分数统计图',
+		        textStyle:{
+		        	fontSize:15
+		        },
+		        x:'center'
+		    },
+		    tooltip : {
+		        trigger: 'axis'
+		    },
+		    calculable : true,
+		    xAxis : [
+		        {
+		            type : 'category',
+		            data : keys,
+		            axisLabel:{ // 禁用横坐标自动隐藏
+			    		interval: 0
+			    	}
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value'
+		        }
+		    ],
+		    series : [			
+		        {
+		            name:'企业信用分数',
+		            type:'bar',
+		            barWidth:18,
+		            data:values,
+		            itemStyle : { normal: {label : {show: true, position: 'top',textStyle:{color:'#000'}}}},
+		            label:{            //饼图图形上的文本标签
+                        normal:{
+                            show:true,
+                            position:'inner', //标签的位置
+                            textStyle : {
+                                fontWeight : 300 ,
+                                fontSize : 16    //文字的字体大小
+                            },
+                            formatter:'{d}%'
+
+                            
+                        }
+                    },
+		        }
+		    ]
+		};
+
+		setInterval(function() {
+			option.xAxis[0].data.shift();//删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
+			option.xAxis[0].data.push(Math.ceil(Math.random()*10));
+			option.series[0].data.shift();
+			option.series[0].data.push(Math.ceil(Math.random()*10));
+			myChart.setOption(option, true);
+		}, 1000);
+	</script>
+</body>
+</html>

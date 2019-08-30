@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>饼图</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript" src="../static/echarts-all.js"></script> 
+</head>
+<body>
+	<div id="container" style="height:400px">						
+	</div>
+	<script type="text/javascript">
+		var data = [{"name":"监理企业","value":237},{"name":"招标代理企业","value":307},{"name":"生产供货企业","value":65},{"name":"设计企业","value":239},{"name":"其它企业","value":223},{"name":"施工企业","value":1360},{"name":"质量检测企业","value":55},{"name":"白蚁防治企业","value":32}];
+		var dom = document.getElementById("container");
+   	    var myChart = echarts.init(dom);
+   	    option = null;
+   	    option = {
+   	        title : {
+   	            text: '企业类型统计',
+   		        textStyle:{
+   		        	fontSize:15
+   		        },
+   	            x:'center'
+   	        },
+   	        tooltip : {
+   	            trigger: 'item',
+   	            formatter: "{a} <br/>{b} : {c}家 ({d}%)"
+   	        },
+   	        series : [
+   	            {
+   	                name: '组成单位',
+   	                type: 'pie',
+   	                radius : '55%',
+   	                center: ['50%', '60%'],
+   	                data:data,	                    
+                    itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						},
+						normal:{
+							color:function(params) {
+								//自定义颜色
+								var colorList = [           
+								    '#ffccff','#FFEC8B ','#FFA07A','#0c96f3',                                   
+								    '#8FBC8F','#87CEFA','#EE5C42','#7B68EE'
+								];
+								return colorList[params.dataIndex]
+							}
+						}
+        	        }
+   	            }
+   	        ]
+   	    };
+
+   	    myChart.setOption(option, true);
+	</script>
+</body>
+</html>
