@@ -16,7 +16,7 @@ foreach($filename as $k=>$v){
     	foreach ($fileArr as $key => $value) {
     		if($value=="." || $value==".."){continue;}
     		// windos默认编码为gbk
-    		$conname[$v][] = iconv("GB2312","UTF-8",$value);
+    		$conname[$v][] = iconv("GB2312","UTF-8",$value) . '@' .date('Y-m-d',filemtime($con.'/'.$v.'/'.$value));
     	}
     }
 }

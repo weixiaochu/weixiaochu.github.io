@@ -70,13 +70,14 @@
 
 			var html = '';
 	        for(let i in dir[index]) {
+                var blogAttribute = dir[index][i].split("@");
                 // 排除列表页
-                if(dir[index][i] == 'index.html'){
+                if(blogAttribute[0] == 'index.html'){
                     continue;
                 }
                 html += '<li>';
-                    html += '<span class="spw1">07-13</span>';
-                    html += '<a href="./'+dir[index][i]+'" title="">'+dir[index][i]+'</a>';
+                    html += '<span class="spw1">'+blogAttribute[1]+'</span>';
+                    html += '<a href="./'+blogAttribute[0]+'" title="">'+blogAttribute[0]+'</a>';
                 html += '</li>';
             }
             

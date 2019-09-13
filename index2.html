@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>博客时间轴</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://jrain.oscitas.netdna-cdn.com/tutorial/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="./static/timeaxis/2.css">
+	<meta http-equive="content-type" content="text/html" charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+	<script type="text/javascript" src="./dir.js"></script>
+	<script type="text/javascript" src="./static/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class="demo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="main-timeline" id="content">
+<!-- 						
+						<div class="timeline">
+							<a href="#" class="timeline-content">
+							<div class="timeline-icon">
+								<i class="fa fa-globe"></i>
+							</div>
+							<div class="inner-content">
+								<h3 class="title">Web Designing</h3>
+								<p class="description">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo
+								</p>
+							</div>
+							<div class="timeline-year">
+								<span>2018-10-30</span>
+							</div>
+							</a>
+						</div>
+
+ -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		    var html = '';
+            for(let index in dir) {
+            	for(let i in dir[index]) {
+            		var blogAttribute = dir[index][i].split("@");
+        		    // 排除列表页
+                    if(blogAttribute[0] == 'index.html'){
+                        continue;
+                    }
+            		html += '<div class="timeline">';
+						html += '<a href="#" class="timeline-content">';
+							html += '<div class="timeline-icon">';
+								html += '<i class="fa fa-globe"></i>';
+							html += '</div>';
+							html += '<div class="inner-content">';
+								html += '<h3 class="title">'+blogAttribute[0]+'</h3>';
+								html += '<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus lorem, et condimentum neque commodo</p>';
+							html += '</div>';
+							html += '<div class="timeline-year">';
+								html += '<span>'+blogAttribute[1]+'</span>';
+							html += '</div>';
+						html += '</a>';
+					html += '</div>';
+        		}
+    		}
+    		document.getElementById('content').innerHTML = html;
+	</script>
+</body>
+</html>
