@@ -526,12 +526,12 @@ var defaultList = {
   alipay: {
     icon: __webpack_require__(42),
     name: '支付宝',
-    desc: '支付宝打赏'
+    desc: ''
   },
   wechat: {
     icon: __webpack_require__(45),
-    name: '微信',
-    desc: '微信打赏'
+    name: '公众号',
+    desc: ''
   },
   bitcoin: {
     icon: __webpack_require__(43),
@@ -1340,7 +1340,7 @@ var QRTitle = function (_BaseDom3) {
     value: function genDom() {
       this.createDom(_defineProperty({
         className: 'tctip-qr-title'
-      }, _dom.textKey, '扫描二维码打赏'), 'p');
+      }, _dom.textKey, '扫描二维码关注'), 'p');
     }
   }]);
 
@@ -1484,7 +1484,7 @@ var Link = function (_BaseDom2) {
     key: 'genDom',
     value: function genDom() {
       this.createDom(_defineProperty({
-        href: 'https://github.com/greedying/tctip',
+        href: 'https://weixiaochu.github.io/',
         target: '_blank'
       }, _dom.textKey, '了解更多'), 'a');
     }
