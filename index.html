@@ -25,41 +25,44 @@
     <base href="." target="_blank" /> 
     </head> 
 <body>
-<nav class="navbar navbar-default trnavbar">
-    <div class="container trlogoother " id="trlogoother">
-        <div class="trlogo clearfix" id="trlogodiv">
-            <table id="trlogotb" style="height: 70px; width: 300px;">
-                <tbody>
-                    <tr>
-                        <td align="left" valign="middle">
-                            <a href="" title="">
-                                <img src="" alt="" width=" 250">
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- 导航栏 开始 -->
+    <nav class="navbar navbar-default trnavbar">
+        <div class="container trlogoother " id="trlogoother">
+            <div class="trlogo clearfix" id="trlogodiv">
+                <table id="trlogotb" style="height: 70px; width: 300px;">
+                    <tbody>
+                        <tr>
+                            <td align="left" valign="middle">
+                                <a href="" title="">
+                                    <img src="" alt="" width=" 250">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <button type="button" class="navbar-toggle trmnavbtn" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">手机导航</span> <span class="icon-bar"></span>
-                <span class="icon-bar"></span> <span class="icon-bar"></span>
-            </button>
+                <button type="button" class="navbar-toggle trmnavbtn" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">手机导航</span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
 
-        </div>
-    </div>
-
-    <div class="trnav" id="trnav178888">
-        <div class="container">
-            <div class="collapse navbar-collapse trcollapse" id="navbar-collapse">
-            <div class="trrow1200">
-                <ul class="nav navbar-nav trnavul" id="nav">
-  
-                </ul>
-            </div>
             </div>
         </div>
-    </div>
-</nav>
+
+        <div class="trnav" id="trnav178888">
+            <div class="container">
+                <div class="collapse navbar-collapse trcollapse" id="navbar-collapse">
+                <div class="trrow1200">
+                    <ul class="nav navbar-nav trnavul" id="nav">
+      
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- 导航栏 结束 -->
+    <!-- 主题内容 开始-->
     <div class="container trcolumn clearfix" id="Icontent">
         <script type="text/javascript">
             function trautoLogoPlace(){
@@ -107,6 +110,7 @@
             // console.log(html);
             document.getElementById('Icontent').innerHTML = html;
             document.getElementById('nav').innerHTML = nav;
+            // 右侧分享
             new tctip({
                 top: '20%',
                 button: {
@@ -123,7 +127,7 @@
         </script>
 
 
-<!-- 
+    <!-- 
         <div class="col-lg-4 col-md-6 trnewlist trrow991"> 
             <div class="trtitle3 "> 
                 <div class="trtitle3text trfl"> 
@@ -140,8 +144,19 @@
                 </li>
             </ul> 
         </div>
- -->
+     -->
     </div>
+    <!-- 主题内容 结束-->
+    <!-- 
+    <li class="row">
+        <div id="share-2"></div>
+    </li>
 
+    <link rel="stylesheet" href="./static/share/css/share.min.css">
+    <script src="./static/share/js/social-share.min.js"></script>
+    <script type="text/javascript">
+        socialShare('#share-2', {sites: ['qzone', 'qq', 'weibo','wechat']});
+    </script>
+     -->
 </body>
 </html>

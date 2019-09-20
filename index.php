@@ -9,7 +9,7 @@ $filename = scandir($con);
 $conname = array();
 foreach($filename as $k=>$v){
     // 跳过两个特殊目录   continue跳出循环
-    if($v=="." || $v==".." || $v=="static"){continue;}
+    if($v=="." || $v==".." || $v=="static" || $v==".git"){continue;}
     //截取文件名，我只需要文件名不需要后缀;然后存入数组
     if (is_dir($con.'/'.$v)) {
     	$fileArr = scandir($con.'/'.$v);
