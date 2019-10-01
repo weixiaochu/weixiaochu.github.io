@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>悬浮飘窗</title>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	background:#1c94e8;
+}
+.close-content a, .close-content:visited {
+	color:blue;
+	    text-decoration: none;
+}
+.close-div {
+	
+	width:900px;
+	border:5px solid rgba(102, 102, 102, .5);
+	padding:15px;
+	box-shadow:2px 2px 3px rgba(102, 102, 102, .5);
+	left: 50%;
+	margin:130px auto;
+	background:#fff;
+	z-index:99999;
+	color:#000;
+}
+.close-content a:hover {
+	color:red;
+}
+.close-title {
+	color:red;
+	font-weight:bold;
+	font-size:24px;
+	border-bottom:2px solid red;
+	text-align:center;
+	padding:1em;
+}
+.close-content {
+    
+	line-height:2.2em;
+	font-size:16px;
+	padding:40px 15px 15px 15px;
+}
+</style>
+<!--飘窗-->
+<script type="text/javascript" src="../static/AdMove.js"></script>
+<div id="pc1">    
+    <div>
+    	<a href="http://www.baidu.com" target="_blank"><img src="../static/qrcode.jpg"></a>
+    </div>
+</div>
+<div id="pc2" >    
+    <div>
+    	<a href="http://www.baidu.com" target="_blank"><img src="../static/qrcode.jpg"></a>
+    </div>
+</div>
+ 
+ 
+<script>
+	var ad1 = new AdMove("pc1", true);
+	ad1.Run();
+	 
+	var ad2 = new AdMove("pc2", true);
+	ad2.Run();
+
+</script>
+</head>
+<body> 
+    
+
+</body>
+</html>
