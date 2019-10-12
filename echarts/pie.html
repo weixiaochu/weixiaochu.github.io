@@ -53,7 +53,16 @@
    	        ]
    	    };
 
-   	    myChart.setOption(option, true);
+   	  myChart.setOption(option, true);
+        /*
+         click 点击事件
+         dblclick 双击时间
+        */
+        myChart.on("mousemove",function(params){
+                 var name=params.name;
+                 var value=params.value;
+                 console.info(name+"\n"+value);
+         });
 	</script>
 </body>
 </html>
