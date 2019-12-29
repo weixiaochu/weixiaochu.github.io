@@ -25,7 +25,7 @@ $ git remote -v 发现本地仓库已经关联的远程仓库
 origin  http://192.168.101.64/root/test001.git (fetch)
 origin  http://192.168.101.64/root/test001.git (push)
 $ git pull --rebase origin master  从远程仓库拉取代码并和本地代码合并
-
+git push -f origin master
 更改remote地址：先将原来的远程仓库链接删除git remote remove origin
 再添加远程仓库：git remote add origin 。。。。
 
@@ -38,3 +38,15 @@ To push the current branch and set the remote as upstream, use
 
 需要在第一次执行命令时添加--set-upstream将本地分支与远程分支绑定：git push --set-upstream origin master
 后边再执行push直接输入：git push
+
+
+echo "# mysqlSlowQueryMonitor" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/amulx/mysqlSlowQueryMonitor.git
+git push -u origin master
+
+===
+git remote add origin https://github.com/amulx/mysqlSlowQueryMonitor.git
+git push -u origin master
