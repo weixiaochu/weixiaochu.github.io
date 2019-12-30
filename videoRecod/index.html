@@ -63,8 +63,6 @@
           text-decoration: none;
         }
       </style>
-    <script src="./js/push.js"></script>
-    <script src="./js/hm.js"></script>
   </head>  
     <body>      
       <video id="video" controls="true" controlslist="nodownload" src="#"></video>
@@ -86,10 +84,11 @@
         try{
           captureStream = await navigator.mediaDevices.getDisplayMedia({
             video: true,
-            // audio: true,   not support
+            audio: true, 
             cursor: 'always'
           })
         }catch(e){
+          console.log(e);
           alert("Could not get stream")
           return
         }
