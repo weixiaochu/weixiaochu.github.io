@@ -1,0 +1,504 @@
+{
+	"info": {
+		"_postman_id": "d2189d02-7f5f-4c93-8d4e-958ad9ab1a99",
+		"name": "elasticSearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "创建索引-test",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/test",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"test"
+					]
+				},
+				"description": "查看素有索引"
+			},
+			"response": []
+		},
+		{
+			"name": "查看所有索引",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/_all",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_all"
+					]
+				},
+				"description": "查看所有索引"
+			},
+			"response": []
+		},
+		{
+			"name": "删除索引-test",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/test",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"test"
+					]
+				},
+				"description": "删除索引-test"
+			},
+			"response": []
+		},
+		{
+			"name": "创建索引-person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/person",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"person"
+					]
+				},
+				"description": "创建索引-person"
+			},
+			"response": []
+		},
+		{
+			"name": "新增数据",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\":\"John\",\n\t\"last_name\":\"Smith\",\n\t\"age\":25,\n\t\"about\":\"I love to go rock climbing\",\n\t\"interests\":[\"sports\",\"music\",\"movie\"]\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/person/_doc/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"person",
+						"_doc",
+						"1"
+					]
+				},
+				"description": "新增数据"
+			},
+			"response": []
+		},
+		{
+			"name": "查看数据",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/person/_doc/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"person",
+						"_doc",
+						"1"
+					]
+				},
+				"description": "查看数据"
+			},
+			"response": []
+		},
+		{
+			"name": "搜索数据",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/person/_doc/_search?q=first_name=john",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"person",
+						"_doc",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "first_name=john"
+						}
+					]
+				},
+				"description": "搜索数据"
+			},
+			"response": []
+		},
+		{
+			"name": "当前elasticSearch版本信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200",
+					"host": [
+						"localhost"
+					],
+					"port": "9200"
+				},
+				"description": "当前elasticSearch版本信息"
+			},
+			"response": []
+		},
+		{
+			"name": "查看当前节点的所有 Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/_cat/indices?v",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "列出每个Index所包含的 Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/_mapping?pretty=true",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_mapping"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				},
+				"description": "列出每个Index所包含的 Type"
+			},
+			"response": []
+		},
+		{
+			"name": "新建blog索引，指定需要分词的字段",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mappings\": {\r\n    \"aiticle\": {\r\n      \"properties\": {\r\n        \"auth\": {\r\n          \"type\": \"text\",\r\n          \"analyzer\": \"ik_max_word\",\r\n          \"search_analyzer\": \"ik_max_word\"\r\n        },\r\n        \"title\": {\r\n          \"type\": \"text\",\r\n          \"analyzer\": \"ik_max_word\",\r\n          \"search_analyzer\": \"ik_max_word\"\r\n        },\r\n        \"content\": {\r\n          \"type\": \"text\",\r\n          \"analyzer\": \"ik_max_word\",\r\n          \"search_analyzer\": \"ik_max_word\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/blog",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog"
+					]
+				},
+				"description": "新建一个名称为blog的 Index，\n里面有一个名称为article的 Type。\narticle有三个字段:auth，title，content，\n这三个字段都是中文，而且类型都是文本（text），所以需要指定中文分词器，不能使用默认的英文分词器。\n\nElastic 的分词器称为 analyzer。我们对每个字段指定分词器。"
+			},
+			"response": []
+		},
+		{
+			"name": "向blog库中aiticle的表新增数据",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"auth\": \"张三\",\r\n  \"title\": \"浅谈elasticSearch的使用\",\r\n  \"desc\": \"elaSticSearch真的很好用，真的真的很好用\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"1"
+					]
+				},
+				"description": "向指定的 /Index/Type 发送 PUT 请求，就可以在 Index 里面新增一条记录。\n服务器返回的 JSON 对象，会给出 Index、Type、Id、Version 等信息"
+			},
+			"response": []
+		},
+		{
+			"name": "根据id查看aiticle中的数据,带格式化",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/1?pretty=true",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"1"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改指定id的article数据",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"auth\": \"张三\",\r\n  \"title\": \"浅谈elasticSearch的使用\",\r\n  \"desc\": \"中华人民共和国真的真的很厉害\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "删除指定id的article",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "返回所有aiticle记录",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/_search",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"_search"
+					]
+				},
+				"description": "使用 GET 方法，直接请求/Index/Type/_search，就会返回所有记录\n\n\n返回结果：\ntotal：返回记录数，本例是2条。\nmax_score：最高的匹配程度，本例是1.0。\nhits：返回的记录组成的数组。\n\n返回的记录中，每条记录都有一个_score字段，表示匹配的程序，默认是按照这个字段降序排列。"
+			},
+			"response": []
+		},
+		{
+			"name": "aiticle全文搜索",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\" : { \"match\" : { \"title\" : \"浅谈\" }},\r\n  \"size\":1,\r\n  \"from\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/_search",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"_search"
+					]
+				},
+				"description": "Elastic 默认一次返回10条结果，\n可以通过size字段改变这个设置。\n还可以通过from字段，指定位移.\n\nsize和from参数可去掉。\n\n灵活使用size和from可以使用es的分页查询功能"
+			},
+			"response": []
+		},
+		{
+			"name": "aiticle 或 条件查询",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\" : { \"match\" : { \"desc\" : \"实战 厉害\" }}\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/_search",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"_search"
+					]
+				},
+				"description": "如果有多个搜索关键字， Elastic 认为它们是or关系。"
+			},
+			"response": []
+		},
+		{
+			"name": "aiticle 与 条件查询",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": {\r\n    \"bool\": {\r\n      \"must\": [\r\n        { \"match\": { \"desc\": \"mysql\" } },\r\n        { \"match\": { \"desc\": \"实战\" } }\r\n      ]\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9200/blog/aiticle/_search",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"blog",
+						"aiticle",
+						"_search"
+					]
+				},
+				"description": "官方帮助文档\nhttps://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-bool-query.html"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
