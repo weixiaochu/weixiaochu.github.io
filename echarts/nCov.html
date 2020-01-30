@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>全国新型肺炎疫情实时数据</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript" src="../static/echarts-all.js"></script> 
+</head>
+<body>
+	<div id="map" style="height:400px">						
+	</div>
+	<script type="text/javascript">
+		var data = [{"name":"福建","value":101},{"name":"重庆","value":165},{"name":"河南","value":278},{"name":"台湾","value":8},{"name":"香港","value":10},{"name":"陕西","value":56},{"name":"上海","value":101},{"name":"辽宁","value":39},{"name":"云南","value":70},{"name":"广西","value":78},{"name":"内蒙古","value":16},{"name":"青海","value":6},{"name":"湖北","value":4586},{"name":"湖南","value":277},{"name":"四川","value":142},{"name":"海南","value":43},{"name":"澳门","value":7},{"name":"甘肃","value":26},{"name":"山东","value":145},{"name":"黑龙江","value":43},{"name":"浙江","value":428},{"name":"西藏","value":1},{"name":"安徽","value":200},{"name":"吉林","value":14},{"name":"江苏","value":129},{"name":"北京","value":111},{"name":"新疆","value":14},{"name":"江西","value":162},{"name":"广东","value":311},{"name":"贵州","value":12},{"name":"山西","value":35},{"name":"宁夏","value":12},{"name":"天津","value":28},{"name":"河北","value":65}];
+
+		var myChartmap = echarts.init(document.getElementById('map'));      
+	    var option = {
+	        title : {
+	            text: '全国新型肺炎疫情实时数据',
+	            x:'30',
+	            y:'70',
+	            textStyle:{
+		        	fontSize:15
+		        }
+	        },
+	        tooltip : {
+	            trigger: 'item'
+	        },
+	        series : [
+	            {
+	                name: '',
+	                type: 'map',
+	                mapType: 'china',
+	                selectedMode: 'single',     //添加点击事件 此处必须设置
+	                roam: false,
+		            itemStyle: {
+		                normal: {
+		                    color: '#0c96f3',// 地图背景色 28363E
+		                    borderColor: '#010e17',// 区域边界 线条颜色
+		                    borderWidth: 0.5,
+		                    areaStyle: {
+		                        color: 'black'
+		                    },
+		                    label: {
+		                        show: true,
+		                        textStyle: {
+		                            fontSize: 12,// 字体控制
+		                            color: 'black'
+		                        }
+		                    }
+		                }
+		            },
+	                geoCoord: {
+          '山东':[118.7027221,35.8240669],
+          '河北':[115.48333,38.03333],
+          '吉林':[125.35000,43.88333],
+          '黑龙江':[127.63333,47.75000],
+          '辽宁':[123.2291089,40.7533633],
+          '内蒙古':[111.670801, 41.818311],
+          '新疆':[87.68333,43.76667],
+          '甘肃':[104.2886061,34.4947394],
+          '宁夏':[106.26667,37.46667],
+          '山西':[112.53333,37.86667],
+          '陕西':[108.95000,34.26667],
+          '河南':[113.1655984,33.9861531],
+          '安徽':[118.0546032,30.4451186],
+          '江苏':[119.9333711,33.5103792],
+          '浙江':[120.1529956,28.0779000],
+          '福建':[118.30000,26.08333],
+          '广东':[113.66433,23.16667],
+          '江西':[115.4948554,26.7906108],
+          '海南':[110.35000,20.01667],
+          '广西':[108.320004, 22.82402],
+          '贵州':[106.71667,26.56667],
+          '湖南':[111.1882252,27.0648091],
+          '湖北':[111.5397760,30.907985],
+          '四川':[101.3444462,29.8463219],
+          '云南':[101.3444499,23.6502155],
+          '西藏':[91.00000,30.60000],
+          '青海':[96.75000,36.56667],
+          '天津':[117.20000,39.13333],
+          '上海':[121.55333,31.20000],
+          '重庆':[106.45000, 29.56667],
+          '北京': [116.7691520,40.5202081],
+          '台湾': [121.30, 25.03],
+          '香港': [115.4113769,21.8513021],
+          '澳门': [113.23608,21.64721790],
+		            },
+	                data:data
+	            },{
+	                name: '',
+	                type: 'map',
+	                mapType: 'china',
+	                selectedMode: 'single',     //添加点击事件 此处必须设置
+	                roam: false,
+	                itemStyle:{
+	                    normal:{label:{show:true},color: '#C1EAFA'},
+	                    emphasis:{label:{show:true}},
+	                    color:'rgba(255,0,255,0.8)', //刚才说的图例颜色设置
+	                    areaStyle:{color:'red'}
+	                },
+	                data:[],
+	                markPoint:{
+		                data:data
+	                }
+	            },
+		        {
+		            name:'全球对比',
+		            type:'pie',
+		            
+		            tooltip: {
+		                trigger: 'item',
+		                formatter: "{a} <br/>{b} : {c} ({d}%)"
+		            },
+		            center: [document.getElementById('map').offsetWidth - 140, 325],
+		            radius: [10, 50],
+		            data:[
+		                {name: '其它国家', value: 67},
+		                {name: '中国', value: 7742}
+		            ]
+		        }
+	        ]
+	    };
+	
+	    function eConsole(param) {
+	        console.log(param["target"]);	    
+	    }
+	    myChartmap.on(echarts.config.EVENT.MAP_SELECTED, eConsole);
+	    myChartmap.setOption(option);  
+	</script>
+</body>
+</html>
+
